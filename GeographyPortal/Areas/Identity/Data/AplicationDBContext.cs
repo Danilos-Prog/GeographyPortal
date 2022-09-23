@@ -8,8 +8,7 @@ namespace GeographyPortal.Areas.Identity.Data;
 
 public class AplicationDBContext : IdentityDbContext<GeographyPortalUser>
 {
-    public AplicationDBContext(DbContextOptions<AplicationDBContext> options)
-        : base(options)
+    public AplicationDBContext(DbContextOptions<AplicationDBContext> options) : base(options)
     {
     }
 

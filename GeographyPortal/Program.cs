@@ -1,4 +1,4 @@
-using Microsoft.OpenApi.Models;
+﻿using Microsoft.OpenApi.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using GeographyPortal.Areas.Identity.Data;
@@ -7,9 +7,9 @@ var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("AplicationDBContextConnection") ?? throw new InvalidOperationException("Connection string 'AplicationDBContextConnection' not found.");
 
 builder.Services.AddDbContext<AplicationDBContext>(options =>
-    options.UseSqlServer(connectionString));
-
-builder.Services.AddDefaultIdentity<GeographyPortalUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    options.UseNpgsql(connectionString));
+//Как поднимается сервис паблишера и ребита поменять значнеие на true для подтвреждения почты
+builder.Services.AddDefaultIdentity<GeographyPortalUser>(options => options.SignIn.RequireConfirmedAccount = false)
     .AddEntityFrameworkStores<AplicationDBContext>();
 
 // Add services to the container.
