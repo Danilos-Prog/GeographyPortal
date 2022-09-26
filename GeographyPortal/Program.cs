@@ -21,6 +21,8 @@ builder.Services.AddSwaggerGen(c =>
 
 builder.Services.AddScoped<IExerciseRepository, ExerciseRepository>();
 builder.Services.AddScoped<IExerciseService, ExerciseService>();
+builder.Services.AddScoped<ITestRepository, TestRepository>();
+builder.Services.AddScoped<ITestService, TestService>();
 
 
 var app = builder.Build();

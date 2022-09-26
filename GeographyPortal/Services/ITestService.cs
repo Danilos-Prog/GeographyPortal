@@ -8,12 +8,12 @@ namespace GeographyPortal.Services
     {
         public Task<ICollection<Test>> GetAsync();
 
-        public Task<Test?> GetAsync(string id);
+        public Task<Test> GetAsync(Guid id);
 
         public Task CreateAsync(Test newExercise);
 
-        public Task UpdateAsync(string id, Test updatedExercise);
+        public Task UpdateAsync(Guid id, Test updatedExercise);
 
-        public Task RemoveAsync(string id);
+        public Task RemoveAsync(Guid id);
     }
 }

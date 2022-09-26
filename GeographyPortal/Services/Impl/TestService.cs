@@ -1,32 +1,40 @@
 ﻿using GeographyPortal.Models;
+using GeographyPortal.Repositories;
 
 namespace GeographyPortal.Services.Impl
 {
     public class TestService : ITestService
     {
-        public Task CreateAsync(Test newExercise)
+        private readonly ITestRepository _testRepository;
+
+        public TestService(ITestRepository testRepository)
         {
-            throw new NotImplementedException();
+            _testRepository = testRepository;
         }
 
-        public Task<ICollection<Test>> GetAsync()
+        public async Task CreateAsync(Test newExercise)
         {
-            throw new NotImplementedException();
+            await _testRepository.CreateAsync(newExercise);
         }
 
-        public Task<Test?> GetAsync(string id)
+        public async Task<ICollection<Test>> GetAsync()
         {
-            throw new NotImplementedException();
+            return await _testRepository.GetAsync();
         }
 
-        public Task RemoveAsync(string id)
+        public async Task<Test> GetAsync(Guid id)
         {
-            throw new NotImplementedException();
+            return await GetAsync(id);
         }
 
-        public Task UpdateAsync(string id, Test updatedExercise)
+        public async Task RemoveAsync(Guid id)
         {
-            throw new NotImplementedException();
+            await _testRepository.RemoveAsync(id);
+        }
+
+        public async Task UpdateAsync(Guid id, Test updatedExercise)
+        {
+            await _testRepository.UpdateAsync(id, updatedExercise);
         }
     }
 }

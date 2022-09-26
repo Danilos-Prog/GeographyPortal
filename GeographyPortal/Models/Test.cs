@@ -1,16 +1,16 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
+using MongoDB.Bson.Serialization.IdGenerators;
 
 namespace GeographyPortal.Models
 {
     public class Test
     {
-        [BsonId]
-        [BsonRepresentation(BsonType.ObjectId)]
-        public string? Id { get; set; }
+        [BsonId(IdGenerator = typeof(GuidGenerator))]
+        public Guid Id { get; set; }
         
         public Guid UserId { get; set; }
 
-        public IEnumerable<string>? Exercises { get; set; }
+        public IEnumerable<Guid>? Exercises { get; set; }
     }
 }

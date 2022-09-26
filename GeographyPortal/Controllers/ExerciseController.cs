@@ -21,7 +21,7 @@ namespace GeographyPortal.Controllers
             return await _exerciseService.GetAsync();
         }
 
-        [HttpGet("{id:length(24)}")]
+        [HttpGet("{id:length(36)}")]
         public async Task<ActionResult<Exercise?>> Get(Guid id)
         {
             var exercise = await _exerciseService.GetAsync(id);
@@ -43,7 +43,7 @@ namespace GeographyPortal.Controllers
         }
 
 
-        [HttpPut("{id:length(24)}")]
+        [HttpPut("{id:length(36)}")]
         public async Task<IActionResult> Update(Guid id, Exercise updatedExercise)
         {
             var exercise = await _exerciseService.GetAsync(id);
@@ -60,7 +60,7 @@ namespace GeographyPortal.Controllers
             return NoContent();
         }
 
-        [HttpDelete("{id:length(24)}")]
+        [HttpDelete("{id:length(36)}")]
         public async Task<IActionResult> Delete(Guid id)
         {
             var exercise = await _exerciseService.GetAsync(id);
