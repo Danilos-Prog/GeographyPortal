@@ -11,6 +11,6 @@ namespace GeographyPortal.Models
         
         public Guid UserId { get; set; }
 
-        public IEnumerable<Guid>? Exercises { get; set; }
+        public IEnumerable<Exercise> Exercises { get; set; }
     }
 }
