@@ -6,7 +6,7 @@ namespace GeographyPortal.Services
     {
         public Task<ICollection<Exercise>> GetAsync();
 
-        public Task<Exercise?> GetAsync(Guid id);
+        public Task<Exercise> GetAsync(Guid id);
 
         public Task CreateAsync(Exercise newExercise);
 

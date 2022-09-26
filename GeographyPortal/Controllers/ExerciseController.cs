@@ -22,7 +22,7 @@ namespace GeographyPortal.Controllers
         }
 
         [HttpGet("{id:length(36)}")]
-        public async Task<ActionResult<Exercise?>> Get(Guid id)
+        public async Task<ActionResult<Exercise>> Get(Guid id)
         {
             var exercise = await _exerciseService.GetAsync(id);
 

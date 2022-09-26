@@ -23,7 +23,7 @@ namespace GeographyPortal.Services.Impl
            return await _exerciseRepository.GetAsync();
         }
 
-        public async Task<Exercise?> GetAsync(Guid id)
+        public async Task<Exercise> GetAsync(Guid id)
         {
             return await _exerciseRepository.GetAsync(id);
         }
