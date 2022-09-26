@@ -1,14 +1,29 @@
+using GeographyPortal.Models;
+using GeographyPortal.Repositories;
+using GeographyPortal.Repositories.Impl;
+using GeographyPortal.Services;
+using GeographyPortal.Services.Impl;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.Configure<PortalGeographyMongoDBSettings>(
+    builder.Configuration.GetSection("PortalGeographyMongoDB"));
+
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddSwaggerGen(c =>
 {
-    c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "GeographyPortal API", Version = "v0.1" });
 });
+
+
+builder.Services.AddScoped<IExerciseRepository, ExerciseRepository>();
+builder.Services.AddScoped<IExerciseService, ExerciseService>();
+builder.Services.AddScoped<ITestRepository, TestRepository>();
+builder.Services.AddScoped<ITestService, TestService>();
+
 
 var app = builder.Build();
 
