@@ -17,11 +17,16 @@ namespace GeographyPortal.Controllers
             _emailSenderService = emailSenderService;
         }
 
-
+        /// <summary>
+        /// Отправка почты на e-mail
+        /// </summary>
+        /// <param name="email">E-mail получателя</param>
+        /// <param name="title">Заголовок письма</param>
+        /// <param name="subject">Тело письма</param>
         [HttpPost]
         public void SendEmail(string email, string title, string subject)
         {
-            
+            _emailSenderService.SendEmail(email, title, subject);   
         }
 
     }

@@ -5,17 +5,18 @@ namespace GeographyPortal.Services.Publishers.Impl
 {
     public class EmailSenderService : IEmailSenderService
     {
-        readonly IBus _bus;
+        readonly ISendEndpointProvider _sendEndpointProvider;
 
-        public EmailSenderService(IBus bus)
+        public EmailSenderService(ISendEndpointProvider sendEndpointProvider)
         {
-            _bus = bus;
+            _sendEndpointProvider = sendEndpointProvider;
         }
 
         public async void SendEmail(string email, string title, string subject)
         {
-            await _bus.Publish(new MessageToSend { EmailAdress = email, TextOfEmail = title, Subject = subject });
-
+            var endpoint = await _sendEndpointProvider.GetSendEndpoint(new Uri("queue:order"));
+            
+            await endpoint.Send(new MessageToSend { EmailAdress = email, TextOfEmail = title, Subject = subject });
         }
     }
 }

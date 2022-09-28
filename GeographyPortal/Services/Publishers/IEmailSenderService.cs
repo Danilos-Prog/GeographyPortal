@@ -1,6 +1,4 @@
-﻿using MassTransit;
-
-namespace GeographyPortal.Services.Publishers
+﻿namespace GeographyPortal.Services.Publishers
 {
     public interface IEmailSenderService
     {

@@ -4,6 +4,8 @@ using GeographyPortal.Repositories;
 using GeographyPortal.Repositories.Impl;
 using GeographyPortal.Services;
 using GeographyPortal.Services.Impl;
+using GeographyPortal.Services.Publishers;
+using GeographyPortal.Services.Publishers.Impl;
 using MassTransit;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
@@ -33,6 +35,7 @@ builder.Services.AddScoped<IExerciseRepository, ExerciseRepository>();
 builder.Services.AddScoped<IExerciseService, ExerciseService>();
 builder.Services.AddScoped<ITestRepository, TestRepository>();
 builder.Services.AddScoped<ITestService, TestService>();
+builder.Services.AddScoped<IEmailSenderService, EmailSenderService>();
 
 initRabbitMQ();
 
