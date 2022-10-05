@@ -1,7 +1,8 @@
 ﻿using GeographyPortal.Container.Messages;
 using MassTransit;
+using System.Threading.Channels;
 
-namespace GeographyPortal.Services.Publishers.Impl
+namespace GeographyPortal.Services.Impl
 {
     public class EmailSenderService : IEmailSenderService
     {
@@ -12,11 +13,12 @@ namespace GeographyPortal.Services.Publishers.Impl
             _sendEndpointProvider = sendEndpointProvider;
         }
 
-        public async void SendEmail(string email, string title, string subject)
+        public async Task SendEmail(MessageToSend data)
         {
-            var endpoint = await _sendEndpointProvider.GetSendEndpoint(new Uri("queue:order"));
-            
-            await endpoint.Send(new MessageToSend { EmailAdress = email, TextOfEmail = title, Subject = subject });
+
+            var endpoint = await _sendEndpointProvider.GetSendEndpoint(new Uri("queue:messages"));
+
+            await endpoint.Send(data);
         }
     }
 }
