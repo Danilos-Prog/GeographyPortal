@@ -3,6 +3,7 @@ using GeographyPortal.Repositories;
 using GeographyPortal.Repositories.Impl;
 using GeographyPortal.Services;
 using GeographyPortal.Services.Impl;
+using MassTransit;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -23,7 +24,9 @@ builder.Services.AddScoped<IExerciseRepository, ExerciseRepository>();
 builder.Services.AddScoped<IExerciseService, ExerciseService>();
 builder.Services.AddScoped<ITestRepository, TestRepository>();
 builder.Services.AddScoped<ITestService, TestService>();
+builder.Services.AddScoped<IEmailSenderService, EmailSenderService>();
 
+initRabbitMQ();
 
 var app = builder.Build();
 
@@ -50,3 +53,24 @@ app.UseSwaggerUI(c =>
 });
 
 app.Run();
+
+
+void initRabbitMQ()
+{
+    builder.Services.AddMassTransit(x =>
+    {
+
+        x.SetKebabCaseEndpointNameFormatter();
+
+        x.UsingRabbitMq((context, cfg) =>
+        {
+            cfg.Host("localhost", "/", h =>
+            {
+                h.Username("guest");
+                h.Password("guest");
+            });
+
+            cfg.ConfigureEndpoints(context);
+        });
+    });
+}
