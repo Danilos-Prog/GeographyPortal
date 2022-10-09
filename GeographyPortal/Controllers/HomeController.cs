@@ -1,4 +1,5 @@
 ﻿using GeographyPortal.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -13,6 +14,7 @@ namespace GeographyPortal.Controllers
             _logger = logger;
         }
 
+        [Authorize(Roles = "User, Administrator")]
         public IActionResult Index()
         {
             return View();
