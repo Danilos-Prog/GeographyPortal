@@ -14,5 +14,9 @@ namespace GeographyPortal.Models
 
         public string Description { get; set; }
 
+        public ICollection<string> answers { get; set; }
+
+        public int rightAnswer { get; set; }
+
     }
 }
