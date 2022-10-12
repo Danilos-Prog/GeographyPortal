@@ -1,9 +1,11 @@
+using GeographyPortal.Areas.Identity.Data;
 using GeographyPortal.Models;
 using GeographyPortal.Repositories;
 using GeographyPortal.Repositories.Impl;
 using GeographyPortal.Services;
 using GeographyPortal.Services.Impl;
 using MassTransit;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
