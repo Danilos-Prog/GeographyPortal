@@ -1,14 +1,13 @@
-using Microsoft.OpenApi.Models;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
+using GeographyPortal;
 using GeographyPortal.Areas.Identity.Data;
 using GeographyPortal.Models;
 using GeographyPortal.Repositories;
 using GeographyPortal.Repositories.Impl;
 using GeographyPortal.Services;
 using GeographyPortal.Services.Impl;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
-using GeographyPortal;
 
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("AplicationDBContextConnection") ?? throw new InvalidOperationException("Connection string 'AplicationDBContextConnection' not found.");
@@ -36,6 +35,7 @@ builder.Services.AddScoped<IExerciseRepository, ExerciseRepository>();
 builder.Services.AddScoped<IExerciseService, ExerciseService>();
 builder.Services.AddScoped<ITestRepository, TestRepository>();
 builder.Services.AddScoped<ITestService, TestService>();
+builder.Services.AddScoped<IAuth, Auth>();
 
 
 

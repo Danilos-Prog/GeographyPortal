@@ -1,6 +1,5 @@
 ﻿using GeographyPortal.Models;
 using GeographyPortal.Repositories;
-using MongoDB.Driver;
 
 namespace GeographyPortal.Services.Impl
 {
@@ -20,7 +19,7 @@ namespace GeographyPortal.Services.Impl
 
         public async Task<ICollection<Exercise>> GetAsync()
         {
-           return await _exerciseRepository.GetAsync();
+            return await _exerciseRepository.GetAsync();
         }
 
         public async Task<Exercise> GetAsync(Guid id)

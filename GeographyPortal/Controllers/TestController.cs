@@ -1,18 +1,18 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using GeographyPortal.Models;
 using GeographyPortal.Services;
-using GeographyPortal.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace GeographyPortal.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class TestController : Controller 
+    public class TestController : Controller
     {
         private readonly ITestService _testService;
 
-        public TestController(ITestService testService) 
+        public TestController(ITestService testService)
         {
-            _testService = testService; 
+            _testService = testService;
         }
 
         [HttpGet]

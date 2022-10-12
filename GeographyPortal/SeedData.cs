@@ -14,7 +14,7 @@ namespace GeographyPortal
 
         private static void SeedUsers(UserManager<GeographyPortalUser> userManager)
         {
-            if(userManager.FindByNameAsync("admin").Result == null)
+            if (userManager.FindByNameAsync("admin").Result == null)
             {
                 var user = new GeographyPortalUser
                 {
@@ -47,7 +47,7 @@ namespace GeographyPortal
                 {
                     Name = "User"
                 };
-                var result =  roleManager.CreateAsync(role).Result ;
+                var result = roleManager.CreateAsync(role).Result;
             }
         }
 
